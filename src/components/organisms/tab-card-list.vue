@@ -5,18 +5,29 @@ import TabCard from "../molecules/tab-card.vue";
 
 const tabsStore = useTabsStore();
 
-const allTabs = ref<any[]>([]);
-
 onMounted(() => {
-  chrome.tabs.query({}, (tabs) => {
-    allTabs.value = tabs;
+  tabsStore.fetchAllTabs();
+});
+
+const allTabs = computed(() => {
+  const urls: string[] = [];
+
+  tabsStore.tabs.forEach(function (tab) {
+    tab.url
+      ? urls.push({
+          name: tab.title,
+          image: tab.favIconUrl,
+        })
+      : null;
   });
+  console.log("urls", urls);
+
+  return urls;
 });
 </script>
 
 <template>
-  <div>
-    {{ allTabs }}
+  <div v-if="allTabs.length > 0">
     <ul role="list" class="">
       <TabCard
         v-for="tab in allTabs"

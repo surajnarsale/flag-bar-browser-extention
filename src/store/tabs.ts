@@ -5,9 +5,9 @@ export const useTabsStore = defineStore("tabs-store", {
     tabs: [] as any[],
   }),
   actions: {
-    fetchAllTabs() {
-      chrome.tabs.query({}, (tabs) => {
-        this.$state.tabs = tabs;
+    async fetchAllTabs() {
+      await chrome.tabs.query({}, (tabs) => {
+        this.tabs = tabs;
       });
     },
   },
