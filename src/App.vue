@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { computed, onMounted } from "vue";
+import TwoColomnLayout from "./components/templates/two-colomn-layout.vue";
 
 onMounted(() => {});
 
@@ -24,9 +25,7 @@ const allUrls = computed(() => {
 </script>
 
 <template>
-  <div v-if="allUrls" class="bg-blue-400">
-    <h2 v-for="url in allUrls">{{ url }}</h2>
-  </div>
+  <TwoColomnLayout />
 </template>
 
 <style scoped></style>

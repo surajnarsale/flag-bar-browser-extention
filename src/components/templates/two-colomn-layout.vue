@@ -1,0 +1,83 @@
+<script setup lang="ts">
+import { ref } from "vue";
+import TabCardList from "../organisms/tab-card-list.vue";
+
+const people = [
+  {
+    name: "Calvin Hawkins",
+    email: "calvin.hawkins@example.com",
+    image:
+      "https://images.unsplash.com/photo-1491528323818-fdd1faba62cc?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
+  },
+  {
+    name: "Kristen Ramos",
+    email: "kristen.ramos@example.com",
+    image:
+      "https://images.unsplash.com/photo-1550525811-e5869dd03032?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
+  },
+  {
+    name: "Ted Fox",
+    email: "ted.fox@example.com",
+    image:
+      "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
+  },
+];
+</script>
+
+<template>
+  <div class="fixed top-0 left-0 h-full w-1/2 bg-white" aria-hidden="true" />
+  <div class="fixed top-0 right-0 h-full w-1/2 bg-gray-50" aria-hidden="true" />
+  <div class="relative flex min-h-screen flex-col">
+    <!-- Navbar -->
+
+    <!-- 3 column wrapper -->
+    <div class="mx-auto w-full max-w-7xl flex-grow lg:flex xl:px-8">
+      <!-- Left sidebar & main wrapper -->
+      <div class="min-w-0 flex-1 bg-white xl:flex">
+        <div
+          class="border-b border-gray-200 bg-white xl:w-64 xl:flex-shrink-0 xl:border-b-0 xl:border-r xl:border-gray-200"
+        >
+          <div class="h-full py-6 pl-4 pr-6 sm:pl-6 lg:pl-8 xl:pl-0">
+            <!-- Start left column area -->
+            <div class="relative h-full" style="min-height: 12rem">
+              <div
+                class="absolute inset-0 rounded-lg border-2 border-dashed border-gray-200"
+              />
+            </div>
+            <!-- End left column area -->
+          </div>
+        </div>
+
+        <div class="bg-white lg:min-w-0 lg:flex-1">
+          <div class="h-full py-6 px-4 sm:px-6 lg:px-8">
+            <!-- Start main area-->
+            <div class="relative h-full" style="min-height: 36rem">
+              <div
+                class="absolute inset-0 rounded-lg border-2 border-dashed border-gray-200"
+              />
+            </div>
+            <!-- End main area -->
+          </div>
+        </div>
+      </div>
+
+      <div
+        class="bg-gray-50 pr-4 sm:pr-6 lg:flex-shrink-0 lg:border-l lg:border-gray-200 lg:pr-8 xl:pr-0"
+      >
+        <div class="h-full py-6 pl-6 lg:w-80">
+          <!-- Start right column area -->
+          <div class="relative h-full" style="min-height: 16rem">
+            <div
+              class="absolute inset-0 rounded-lg border border-solid border-gray-200 px-5 pt-5"
+            >
+              <TabCardList />
+            </div>
+          </div>
+          <!-- End right column area -->
+        </div>
+      </div>
+    </div>
+  </div>
+</template>
+
+<style scoped></style>
