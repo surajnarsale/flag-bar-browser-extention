@@ -1,30 +1,25 @@
 <script setup lang="ts">
-import { computed } from "vue";
+import { computed, ref, onMounted } from "vue";
 import { useTabsStore } from "../../store/tabs";
 import TabCard from "../molecules/tab-card.vue";
 
 const tabsStore = useTabsStore();
 
-const allUrls = computed(() => {
-  const urls: string[] = [];
+const allTabs = ref<any[]>([]);
 
+onMounted(() => {
   chrome.tabs.query({}, (tabs) => {
-    tabs.forEach(function (tab) {
-      tab.url ? urls.push(tab.url) : null;
-    });
+    allTabs.value = tabs;
   });
-  console.log("urls", urls);
-
-  return urls;
 });
 </script>
 
 <template>
   <div>
-    {{ allUrls }}
+    {{ allTabs }}
     <ul role="list" class="">
       <TabCard
-        v-for="tab in tabsStore.tabs"
+        v-for="tab in allTabs"
         :key="tab.name"
         :name="tab.name"
         :image="tab.image"
